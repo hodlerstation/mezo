@@ -2,7 +2,6 @@
 
 The video follows four scenes on **Mezo Testnet**. Two roles appear: a mission creator (platform admin account) and a participant (`test1`, wallet `0x40D8…Fe70`). Screenshots from the recorded run are in [`../submission/screenshots`](../submission/screenshots).
 
-**Video:** _link to be added_
 
 ## Scene 1: one product, many networks (≈ 20 s)
 

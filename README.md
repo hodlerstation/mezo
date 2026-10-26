@@ -131,7 +131,7 @@ Guard cases (invalid rules refused at creation, a claim without a linked wallet 
 4. **Missions:** open a Mezo mission and complete the on-chain task (hold, transfer, mint or contract event). The proof is checked on Mezo and approved immediately. Claim to receive each reward leg (MUSD / MEZO / HST), each with its own status and explorer link.
 5. Optional, from this repo: `node tools/check-network.mjs` checks the RPCs and contracts read-only.
 
-**Demo video:** _link to be added_ (scenes in [`docs/demo-script.md`](docs/demo-script.md)).
+**Demo:** the recorded walkthrough is attached to the Mezo Buildathon submission; the scene list and screenshots are in [`docs/demo-script.md`](docs/demo-script.md) and [`submission/screenshots/`](submission/screenshots/).
 
 ## Limitations and roadmap
 

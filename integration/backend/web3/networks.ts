@@ -1,7 +1,7 @@
 // Excerpt from the private HodlerStation repository (hodlerstation-backend)
 //   path:   src/web3/networks.ts
 //   commit: 3c2623c5
-//   scope:  whole file, unmodified
+//   scope:  whole file, unmodified except operational comments redacted
 //   why:    Network registry: mezo-testnet / mezo entries next to bsc and giwa-sepolia.
 // Shown for review only: it imports modules that are not part of this repository and does not build here.
 
@@ -45,7 +45,7 @@ export const DEFAULT_NETWORK: NetworkId = 'bsc';
  *   [0] 기본 로드밸런서, [1] Flashblocks (200ms preconfirmation — head 전파가 더 빠름).
  * 출처: docs.giwa.io/giwa-chain/en/get-started/connect-to-giwa
  *
- * 근거(2026-08 prod 실측): EC2 에서 기본 LB 뒤 일부 노드가 write 직후의
+ * 근거(2026-08 prod 실측): 기본 LB 뒤 일부 노드가 write 직후의
  * receipt.blockNumber 를 아직 몰라 pin 조회가 "0x"(no data) 로 실패 → 클레임 후
  * 잔액 반영이 인덱서 tick(30s) 까지 지연. 두 번째 엔드포인트로 자동 전환할 수
  * 있도록 배열로 정의하고 BscReaderService 가 viem fallback transport 로 감싼다.
@@ -227,22 +227,7 @@ export interface NetworkConfig {
    *    "Mezo 선택 시 Mezo 내용만" 요구).
    */
   missionVisibility?: 'shared' | 'scoped' | 'exclusive';
-  /**
-   * 이 네트워크 자신의 지갑 행이 없을 때 기본 네트워크(BSC) 의 `FEE_COLLECTOR` 행을 **승인된** 지갑으로 쓴다
-   * (수금 FEE_COLLECTOR · 보상 지급 MEZO_REWARDS 두 역할, 대상 체인으로 서명). HST 발행(HST_OPERATOR)은
-   * 포함하지 않는다 — Mezo 테스트넷 HST 원장은 BSC 처럼 DB 원장이다 (2026-10-25 운영자 결정).
-   *
-   * 2026-10-24 운영자 결정 (Mezo Buildathon): Mezo 테스트넷은 BSC 메인 지갑 0x8c4c…0f70 하나로 돈다.
-   * 그 주소는 테스트넷 HstToken/HstTreasury 의 operator 이고 MUSD·MEZO·BTC 를 이미 들고 있으며,
-   * chainId 31611 용 TreasuryWallet 행은 만들지 않는다. 같은 키가 두 체인에서 서명하지만 EIP-155 chain id 가
-   * 대상 체인 값이라 서명이 체인마다 분리된다 (replay 없음).
-   *
-   * 그래서 이 대체는 "폴백" 이 아니다 — 주소 해석은 `fallbackFrom: null` (+ `sharedFrom`) 로 보고하고,
-   * 발견 스윕은 FALLBACK 알림 없이 스캔하며, 발행·지급 preflight 는 통과한다.
-   *
-   * **mezo-testnet 에만 켠다.** 실자산 체인(mezo 메인넷)과 전용 operator 가 있는 GIWA 는 켜지 않는다 —
-   * 그 체인들은 여전히 BSC 키로 발행·지급하지 않는다.
-   */
+  /** 이 네트워크가 플랫폼의 기본 수금·보상 지갑 설정을 이어받는지 (mezo-testnet 만). [operational details redacted] */
   treasuryWalletFromDefault?: true;
   /**
    * operator 가스(네이티브 코인) 감시 (2026-10-25). 지정한 네트워크만 OperatorGasGuardService 가
@@ -368,7 +353,6 @@ export const NETWORKS: Record<NetworkId, NetworkConfig> = {
     explorerApiUrl: 'https://api.explorer.test.mezo.org',
     testnet: true,
     missionVisibility: 'exclusive',
-    // 운영자 결정 (2026-10-24): BSC FEE_COLLECTOR 지갑 하나로 수금·발행·지급 (NetworkConfig 주석).
     treasuryWalletFromDefault: true,
     // 가스 가격 ~146 wei 라 지급 한 건이 ~1e-11 BTC. 0.002 BTC 면 사실상 무제한이고,
     // 그 아래로 내려가면 누가 다른 용도로 꺼냈다는 뜻이라 알린다.

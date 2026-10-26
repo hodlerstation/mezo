@@ -13,7 +13,7 @@ Unmodified code from the private HodlerStation repositories at the points where 
 | HST ledger choice and contracts | `backend/hst-ledger/hst-ledger-mode.service.ts`, `backend/hst-ledger/hst-contracts.mezo.ts` | |
 | Mission rules and proofs | `backend/missions/onchain-rule.types.ts`, `backend/missions/onchain-proof.service.ts` | `frontend/lib/missions/onchain-rule-alignment.ts` |
 | Reward legs and claim | `backend/rewards/*`, `backend/claim/claim.service.ts` | `frontend/lib/missions/claim-legs.ts`, `frontend/hooks/use-skr-claim-legs.ts`, `frontend/components/claim-legs-status.tsx` |
-| Payout wallet sharing | `backend/web3/treasury-wallet.service.ts`, `backend/rewards/mon-chain.service.ts` | |
+| Payout wallet sharing | `backend/rewards/mon-chain.service.ts` | |
 | Behaviour tests | `backend/tests/*.spec.ts` | `frontend/tests/*` |
 
 Some identifiers still carry their historical names (`skr-escrow`, `mon-chain`, `usdt`). The reward escrow was first built for Solana SKR and Monad MON, and Mezo legs reuse it.

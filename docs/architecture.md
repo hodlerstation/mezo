@@ -101,7 +101,7 @@ The mission page lists the legs with *Sending / Paid / Retry* states and an expl
 
 ## 5. Wallets and funding (testnet)
 
-- **One wallet for collection and payouts on Mezo Testnet.** On Mezo Testnet one platform wallet both collects mint payments and pays MUSD/MEZO rewards. Payouts and refunds share its nonce under one lock. Mezo Mainnet always needs a dedicated payout wallet. See [`treasury-wallet.service.ts`](../integration/backend/web3/treasury-wallet.service.ts) and [`mon-chain.service.ts`](../integration/backend/rewards/mon-chain.service.ts).
+- **One wallet for collection and payouts on Mezo Testnet.** On Mezo Testnet one platform wallet both collects mint payments and pays MUSD/MEZO rewards. Payouts and refunds share its nonce under one lock. Mezo Mainnet always needs a dedicated payout wallet. See [`mon-chain.service.ts`](../integration/backend/rewards/mon-chain.service.ts).
 - **Collector deposits stay apart from reward money.** The reward budget is the collector's MUSD minus the funds that back minted HST and minus unminted deposits that may still be refunded. A refund that would eat into reserved reward obligations is refused.
 - **Admin deposits.** A MUSD deposit from a wallet linked to an admin account is held as operator funding. It is never minted.
 - **Payouts stay with their funding wallet.** Reserved payouts are bound to the wallet that funded them. If the payout key changes, they stop with `MON_CUSTODY_CHANGED`. They are not paid from a different wallet.

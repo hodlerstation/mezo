@@ -1,7 +1,7 @@
 // Excerpt from the private HodlerStation repository (hodlerstation-backend)
 //   path:   src/treasury/swap-mint-intake.service.ts
 //   commit: 3c2623c5
-//   scope:  selected line ranges, unmodified (115-237)
+//   scope:  selected line ranges, unmodified except operational comments redacted (115-237)
 //   why:    Mint preflight: the same BSC USDT mint flow, parameterised by network (MUSD on Mezo).
 // Shown for review only: it imports modules that are not part of this repository and does not build here.
 
@@ -100,7 +100,7 @@
   /**
    * 이 네트워크 자신의 operator 지갑(HST_OPERATOR_V2 또는 HST_OPERATOR)이 활성인가.
    * BSC 지갑으로 대체된 주소(`fallbackFrom`)는 없는 것으로 본다 — 다른 체인 키로는 발행하지 않는다.
-   * 예외: 레지스트리가 승인한 공유(`treasuryWalletFromDefault`, mezo-testnet → BSC FEE_COLLECTOR)는
+   * 예외: 레지스트리가 승인한 공유(`treasuryWalletFromDefault`, mezo-testnet) [details redacted]는
    * resolveAddress 가 `fallbackFrom: null` 로 돌려주고 writer 도 같은 행으로 서명하므로 "있음" 이다.
    */
   private async hasOwnOperatorWallet(network: NetworkId): Promise<boolean> {

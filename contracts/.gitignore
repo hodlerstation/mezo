@@ -1,0 +1,5 @@
+# Foundry build artifacts / sensitive
+out/
+cache/
+broadcast/
+lib/
